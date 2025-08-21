@@ -1,11 +1,13 @@
-import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Navbar from './components/Navbar'
+import MainLayout from './components/MainLayout'
+import AdminDashboard from './components/AdminDashboard'
 
 const App = () => {
   return (
     <Routes>
-      <Route path='/' element={<Navbar/>}/>
+      <Route element={<MainLayout/>}>
+        <Route path='/' element={<AdminDashboard/>}/>
+      </Route>
     </Routes>
   )
 }
