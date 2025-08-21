@@ -2,6 +2,12 @@ import { Activity, Droplet, ShoppingBasket, Users } from "lucide-react";
 import { motion } from "motion/react";
 
 const AdminDashboard = () => {
+
+    const dontors = [
+        {name: "John", email: "john@gmail.com", category: "Organ", type: "Kidney"},
+        {name: "Tanish Goel", email: "tanish@gmail.com", category: "Blood", type: "A+"}
+    ]
+
   return (
     <>
       <h1 className="text-white font-medium text-xl mt-6 ml-4">
@@ -59,18 +65,14 @@ const AdminDashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b border-gray-800">
-                  <td className="py-2 px-3">John Doe</td>
-                  <td className="py-2 px-3">john@example.com</td>
-                  <td className="py-2 px-3 text-red-600">Organ</td>
-                  <td className="py-2 px-3 text-green-400">Kidney</td>
+                {dontors.map(items => (
+                    <tr key={items.email} className="border-b border-gray-800">
+                  <td className="py-2 px-3">{items.name}</td>
+                  <td className="py-2 px-3">{items.email}</td>
+                  <td className="py-2 px-3 text-red-600">{items.category}</td>
+                  <td className="py-2 px-3 text-green-400">{items.type}</td>
                 </tr>
-                <tr className="border-b border-gray-800">
-                  <td className="py-2 px-3">Tanish Goel</td>
-                  <td className="py-2 px-3">tanish@example.com</td>
-                  <td className="py-2 px-3 text-red-600">Blood</td>
-                  <td className="py-2 px-3 text-green-400">A+</td>
-                </tr>
+                ))}
               </tbody>
             </table>
         </div>
