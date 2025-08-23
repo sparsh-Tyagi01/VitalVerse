@@ -18,13 +18,12 @@ function Support() {
 
   return (
     <div className="p-6 bg-lavender min-h-screen">
-      {/* Page Title */}
+     
       <h1 className="text-4xl font-extrabold text-indigo-900 mb-8 
                      bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-indigo-400">
         🛠️ Support / FAQs
       </h1>
 
-      {/* FAQ Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {faqs.map((faq, index) => (
           <div

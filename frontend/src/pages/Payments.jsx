@@ -1,6 +1,6 @@
 import React from "react";
 
-// Dummy payment data
+
 const payments = [
   { id: 201, method: "Credit Card", amount: 1500, status: "Completed", date: "2025-08-20" },
   { id: 202, method: "UPI", amount: 7500, status: "Pending", date: "2025-08-18" },
@@ -26,13 +26,13 @@ function Payments() {
         💳 Payments
       </h1>
 
-      {/* Total Paid Summary */}
+  
       <div className="mb-8 p-6 bg-indigo-100 rounded-2xl shadow-lg flex justify-between items-center">
         <h2 className="text-2xl font-bold text-indigo-900">Total Paid:</h2>
         <p className="text-2xl font-extrabold text-indigo-700">₹{totalPaid}</p>
       </div>
 
-      {/* Payments List */}
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {payments.map((p) => (
           <div

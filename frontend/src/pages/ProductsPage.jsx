@@ -1,7 +1,7 @@
 import React from "react";
 import { useCart } from "../context/CartContext";
 
-// Dummy products data
+
 const products = [
   { id: 1, name: "Vitamin C", price: 200, color: "bg-red-200" },
   { id: 2, name: "Protein Powder", price: 1200, color: "bg-green-200" },
@@ -25,7 +25,7 @@ function ProductsPage() {
         Browse our wide range of medical equipment & supplies. Click "Add to Cart" to purchase.
       </p>
 
-      {/* Products Grid */}
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((p) => (
           <div

@@ -1,6 +1,6 @@
 import React from "react";
 
-// Dummy offers data
+
 const offers = [
   { id: 1, desc: "10% off on orders above ₹2000", icon: "🎉" },
   { id: 2, desc: "Free shipping for medical staff", icon: "🚚" },

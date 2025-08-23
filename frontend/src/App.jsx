@@ -10,8 +10,6 @@ import Payments from "./pages/Payments";
 import Offers from "./pages/Offers";
 import Support from "./pages/Support";
 import Feedback from './pages/Feedback';
-
-import { Route, Routes } from 'react-router-dom'
 import MainLayout from './components/MainLayout'
 import AdminDashboard from './components/AdminDashboard'
 

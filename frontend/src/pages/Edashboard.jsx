@@ -1,6 +1,6 @@
 import React from "react";
 
-// Dummy data
+
 const stats = [
   { title: "Total Orders", value: 120, color: "bg-red-200", icon: "📦" },
   { title: "Total Sales", value: "₹1,50,000", color: "bg-green-200", icon: "💰" },
@@ -31,8 +31,8 @@ const statusColors = {
 function Edashboard() {
   return (
     <div className="p-6 bg-lavender min-h-screen">
-      {/* Dashboard Header */}
-<div className="mb-12"> {/* Increased bottom margin for spacing */}
+     
+<div className="mb-12"> 
   <h1 className="text-4xl font-bold text-indigo-900 mb-4">Dashboard</h1>
   <p className="text-gray-800 text-lg md:text-xl">
     Welcome to <span className="font-semibold text-indigo-600">VitalVerse E-Commerce</span>. 
@@ -40,7 +40,7 @@ function Edashboard() {
   </p>
 </div>
 
-{/* Stats Cards */}
+
 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10">
   {stats.map((stat) => (
     <div
@@ -55,7 +55,7 @@ function Edashboard() {
 </div>
 
 
-      {/* Recent Orders */}
+   
       <div className="mb-10">
         <h2 className="text-2xl font-bold text-indigo-900 mb-4">Recent Orders</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -77,7 +77,7 @@ function Edashboard() {
         </div>
       </div>
 
-      {/* Active Offers */}
+     
       <div className="mb-10">
         <h2 className="text-2xl font-bold text-indigo-900 mb-4">Active Offers</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -92,7 +92,6 @@ function Edashboard() {
         </div>
       </div>
 
-      {/* Quick Actions */}
       <div>
         <h2 className="text-2xl font-bold text-indigo-900 mb-4">Quick Actions</h2>
         <div className="flex flex-wrap gap-4">

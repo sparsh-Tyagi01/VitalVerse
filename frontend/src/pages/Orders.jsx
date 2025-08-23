@@ -1,6 +1,6 @@
 import React from "react";
 
-// Dummy orders
+
 const orders = [
   { id: 101, items: ["Stethoscope", "Gloves"], total: 1700, status: "Delivered" },
   { id: 102, items: ["Wheelchair"], total: 7500, status: "Pending" },
@@ -14,7 +14,6 @@ const orders = [
   { id: 110, items: ["Wheelchair", "Gloves"], total: 7800, status: "Delivered" },
 ];
 
-// Different card colors for variety
 const cardColors = [
   "bg-pink-100", "bg-indigo-100", "bg-green-100", "bg-yellow-100", 
   "bg-purple-100", "bg-orange-100", "bg-teal-100", "bg-blue-100"
