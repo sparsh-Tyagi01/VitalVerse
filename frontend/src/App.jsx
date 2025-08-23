@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Enav from "./components/Enav";
@@ -10,8 +11,13 @@ import Offers from "./pages/Offers";
 import Support from "./pages/Support";
 import Feedback from './pages/Feedback';
 
+import { Route, Routes } from 'react-router-dom'
+import MainLayout from './components/MainLayout'
+import AdminDashboard from './components/AdminDashboard'
+
 function App(){
   return (
+
     <>
       <Enav />
       <Routes>
@@ -23,9 +29,16 @@ function App(){
         <Route path="/offers" element={<Offers />} />
         <Route path="/support" element={<Support />} />
         <Route path="/feedback" element={<Feedback/>} />
+        <Route element={<MainLayout/>}>
+        <Route path='/' element={<AdminDashboard/>}/>
+      </Route>
       </Routes>
     </>
   );
+
+    
+  
+
 }
 
 export default App;
