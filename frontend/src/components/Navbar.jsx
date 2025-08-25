@@ -1,5 +1,7 @@
 import { Droplet, Home, LogOut, ShoppingBasket, User } from "lucide-react";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
+
 
 const Navbar = () => {
   return (
@@ -43,15 +45,18 @@ const Navbar = () => {
           />
           E-Commerce
         </motion.div>
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.2 }}
-          className="flex items-center mb-6 font-medium text-[18px] text-white gap-1 cursor-pointer"
-        >
-          <User size={33} className="text-pink-700 brightness-200" />
-          Staff Management
-        </motion.div>
+        <Link to="/staff">
+  <motion.div
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    transition={{ duration: 0.2 }}
+    className="flex items-center mb-6 font-medium text-[18px] text-white gap-1 cursor-pointer"
+  >
+    <User size={33} className="text-pink-700 brightness-200" />
+    Staff Management
+  </motion.div>
+</Link>
+
       </div>
       <motion.div
         whileHover={{ scale: 1.05 }}
