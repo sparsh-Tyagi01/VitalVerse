@@ -1,70 +1,53 @@
 import { Droplet, Home, LogOut, ShoppingBasket, User } from "lucide-react";
-import { motion } from "motion/react";
-import { Link } from "react-router-dom";
-
+import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  return (
-    <div className="flex flex-col w-[17vw] h-[98.5vh] rounded-[10px] justify-between items-center bg-gray-950">
-      <div>
-        <div className="flex justify-center items-center mt-4 mb-8">
-          <img src="logo.png" alt="logo" className="w-15 brightness-200" />
-          <img
-            src="vitalverse.png"
-            alt="vitalverse"
-            className="w-20 brightness-200"
-          />
-        </div>
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.2 }}
-          className="flex items-center mb-6 font-medium text-[18px] text-white gap-1 cursor-pointer"
-        >
-          <Home size={33} className="text-amber-700 brightness-200" />
-          Dashboard
-        </motion.div>
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.2 }}
-          className="flex items-center mb-6 font-medium text-[18px] text-white gap-1 cursor-pointer"
-        >
-          <Droplet size={33} className="text-red-600 brightness-200" />
-          Blood Services
-        </motion.div>
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.2 }}
-          className="flex items-center mb-6 font-medium text-[18px] text-white gap-1 cursor-pointer"
-        >
-          <ShoppingBasket
-            size={33}
-            className="text-emerald-600 brightness-200"
-          />
-          E-Commerce
-        </motion.div>
-        <Link to="/staff">
-  <motion.div
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-    transition={{ duration: 0.2 }}
-    className="flex items-center mb-6 font-medium text-[18px] text-white gap-1 cursor-pointer"
-  >
-    <User size={33} className="text-pink-700 brightness-200" />
-    Staff Management
-  </motion.div>
-</Link>
+  const navItemStyle =
+    "flex items-center mb-6 font-medium text-[18px] text-white gap-2 cursor-pointer";
+  const activeStyle = "text-amber-400 font-bold";
 
+  const navItems = [
+    { name: "Dashboard", to: "/", icon: <Home size={28} className="text-amber-700" /> },
+    { name: "Blood Services", to: "/blood", icon: <Droplet size={28} className="text-red-600" /> },
+    { name: "E-Commerce", to: "/ecommerce", icon: <ShoppingBasket size={28} className="text-emerald-600" /> },
+    { name: "Staff Management", to: "/staff/dashboard", icon: <User size={28} className="text-pink-700" /> },
+    { name: "Donors & Recipients", to: "/donor", icon: <Droplet size={28} className="text-red-600" /> },
+  ];
+
+  const handleLogout = () => {
+    alert("Logged out!");
+  };
+
+  return (
+    <div className="flex flex-col w-[220px] min-h-screen bg-gray-950 rounded-[10px] justify-between p-4">
+      <div className="flex flex-col items-center mb-8">
+        <img src="/logo.png" alt="logo" className="w-16 mb-2" />
+        <img src="/vitalverse.png" alt="vitalverse" className="w-24" />
       </div>
+
+      <div className="flex flex-col">
+        {navItems.map((item) => (
+          <NavLink
+            key={item.name}
+            to={item.to}
+            className={({ isActive }) => `${navItemStyle} ${isActive ? activeStyle : ""}`}
+          >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              {item.icon}
+            </motion.div>
+            {item.name}
+          </NavLink>
+        ))}
+      </div>
+
       <motion.div
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        transition={{ duration: 0.2 }}
-        className="flex items-center mb-3 font-medium text-[18px] text-white gap-1 cursor-pointer"
+        className="flex items-center gap-2 mt-6 font-medium text-[18px] text-white cursor-pointer"
+        onClick={handleLogout}
       >
-        <LogOut size={33} className="text-yellow-600 brightness-200" />
+        <LogOut size={28} className="text-yellow-600" />
         Logout
       </motion.div>
     </div>
