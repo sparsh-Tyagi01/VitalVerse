@@ -9,7 +9,6 @@ import DonorDashboard from "./components/DonorDashboard";
 import Donor from "./components/Donor";
 import FindMatch from "./components/FindMatch";
 import Guideline from "./components/Guideline";
-import BloodServices from "./pages/BloodServices";
 
 import Edashboard from "./pages/Edashboard";
 import ProductsPage from "./pages/ProductsPage";
@@ -27,6 +26,7 @@ import Tasks from "./pages/StaffManagement/Tasks";
 import Messages from "./pages/StaffManagement/Messages";
 import StaffShifts from "./pages/StaffManagement/StaffShifts";
 import StaffPayroll from "./pages/StaffManagement/StaffPayroll";
+import Register from "./components/Register";
 
 const NotFound = () => <div className="text-center mt-10 text-2xl">404 - Page Not Found</div>;
 
@@ -36,12 +36,11 @@ function App() {
       {/* ===== MAIN LAYOUT ===== */}
       <Route element={<MainLayout />}>
         <Route path="/" element={<DonorDashboard />} />
-        <Route path="/blood" element={<BloodServices />} />
-
         <Route path="/donor" element={<Donor />} />
         <Route path="/donor/dashboard" element={<DonorDashboard />} />
+        <Route path="/donor/register" element={<Register/>} />
         <Route path="/donor/find" element={<FindMatch />} />
-        <Route path="/donor/guide" element={<Guideline />} />
+        <Route path="/donor/guidelines" element={<Guideline />} />
       </Route>
 
       {/* ===== E-COMMERCE LAYOUT ===== */}
