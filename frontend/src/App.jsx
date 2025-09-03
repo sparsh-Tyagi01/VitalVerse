@@ -26,9 +26,14 @@ import Tasks from "./pages/StaffManagement/Tasks";
 import Messages from "./pages/StaffManagement/Messages";
 import StaffShifts from "./pages/StaffManagement/StaffShifts";
 import StaffPayroll from "./pages/StaffManagement/StaffPayroll";
-import Register from "./components/Register";
 
-const NotFound = () => <div className="text-center mt-10 text-2xl">404 - Page Not Found</div>;
+import Register from "./components/Register";
+import Login from "./components/Login";
+import ProtectedRoute from "./utils/ProtectedRoute";
+
+const NotFound = () => (
+  <div className="text-center mt-10 text-2xl">404 - Page Not Found</div>
+);
 
 function App() {
   return (
@@ -37,10 +42,36 @@ function App() {
       <Route element={<MainLayout />}>
         <Route path="/" element={<DonorDashboard />} />
         <Route path="/donor" element={<Donor />} />
-        <Route path="/donor/dashboard" element={<DonorDashboard />} />
-        <Route path="/donor/register" element={<Register/>} />
-        <Route path="/donor/find" element={<FindMatch />} />
-        <Route path="/donor/guidelines" element={<Guideline />} />
+
+        {/* Public Routes */}
+        <Route path="/donor/register" element={<Register />} />
+        <Route path="/donor/login" element={<Login />} />
+
+        {/* Protected Routes */}
+        <Route
+          path="/donor/dashboard"
+          element={
+            <ProtectedRoute>
+              <DonorDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/donor/find"
+          element={
+            <ProtectedRoute>
+              <FindMatch />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/donor/guidelines"
+          element={
+            <ProtectedRoute>
+              <Guideline />
+            </ProtectedRoute>
+          }
+        />
       </Route>
 
       {/* ===== E-COMMERCE LAYOUT ===== */}
@@ -66,7 +97,7 @@ function App() {
         <Route path="messages" element={<Messages />} />
       </Route>
 
-      {/* 404 */}
+      {/* ===== 404 ===== */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
