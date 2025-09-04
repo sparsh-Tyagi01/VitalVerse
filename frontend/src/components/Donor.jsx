@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 const Donor = () => {
 
   const data = [
-    {name: "Dashboard", para: "Overview of donation requests, matches, and recent activity.", icon: <HomeIcon size={35} className='text-blue-500'/>, to: '/donor/dashboard'},
-    {name: "Register", para: "Sign up as donor or recepient 'blood/organ'.", icon: <UserPlus size={35} className='text-green-600'/>, to: '/donor/register'},
-    {name: "Find Match", para: "Search & view compatiable donors/recipients.", icon: <Search size={35} className='text-violet-500'/>, to: '/donor/find'},
-    {name: "Guidelines", para: "Eligibility rules, safety info, and FAQs.", icon: <Book size={35} className='text-fuchsia-500'/>, to: '/donor/guidelines'},
-    {name: "Support", para: "Helpdesk & emergency contact.", icon: <HelpCircle size={35} className='text-emerald-500'/>, to: '/donor/support'}
+    {name: "Dashboard", para: "Overview of donation requests, matches, and recent activity.", icon: <HomeIcon size={35} className='text-blue-500'/>, to: '/dashboard'},
+    {name: "Register", para: "Sign up as donor or recepient 'blood/organ'.", icon: <UserPlus size={35} className='text-green-600'/>, to: '/register'},
+    {name: "Find Match", para: "Search & view compatiable donors/recipients.", icon: <Search size={35} className='text-violet-500'/>, to: '/find'},
+    {name: "Guidelines", para: "Eligibility rules, safety info, and FAQs.", icon: <Book size={35} className='text-fuchsia-500'/>, to: '/guidelines'},
+    {name: "Support", para: "Helpdesk & emergency contact.", icon: <HelpCircle size={35} className='text-emerald-500'/>, to: '/support'}
   ]
 
   return (

@@ -30,6 +30,7 @@ import StaffPayroll from "./pages/StaffManagement/StaffPayroll";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import ProtectedRoute from "./utils/ProtectedRoute";
+import SignUp from "./components/SignUp";
 
 const NotFound = () => (
   <div className="text-center mt-10 text-2xl">404 - Page Not Found</div>
@@ -44,12 +45,13 @@ function App() {
         <Route path="/donor" element={<Donor />} />
 
         {/* Public Routes */}
-        <Route path="/donor/register" element={<Register />} />
-        <Route path="/donor/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/signup" element={<SignUp/>} />
+        <Route path="/login" element={<Login />} />
 
         {/* Protected Routes */}
         <Route
-          path="/donor/dashboard"
+          path="/dashboard"
           element={
             <ProtectedRoute>
               <DonorDashboard />
@@ -57,7 +59,7 @@ function App() {
           }
         />
         <Route
-          path="/donor/find"
+          path="/find"
           element={
             <ProtectedRoute>
               <FindMatch />
@@ -65,11 +67,9 @@ function App() {
           }
         />
         <Route
-          path="/donor/guidelines"
+          path="/guidelines"
           element={
-            <ProtectedRoute>
               <Guideline />
-            </ProtectedRoute>
           }
         />
       </Route>

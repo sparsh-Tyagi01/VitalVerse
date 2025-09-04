@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
-  const { user, setUser } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const navItemStyle =
@@ -36,9 +36,8 @@ const Navbar = () => {
   ];
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    setUser(null);
-    navigate("/donor/login");
+    logout();
+    navigate("/login");
   };
 
   return (
@@ -87,7 +86,7 @@ const Navbar = () => {
           </motion.div>
         ) : (
           <NavLink
-            to="/donor/login"
+            to="/login"
             className={`${navItemStyle} mt-6`}
           >
             <motion.div
