@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 import MainLayout from "./components/MainLayout";
 import EcommerceLayout from "./components/EcommerceLayout";
@@ -38,6 +39,8 @@ const NotFound = () => (
 
 function App() {
   return (
+    <>
+    <Toaster position="top-right" reverseOrder={false} />
     <Routes>
       {/* ===== MAIN LAYOUT ===== */}
       <Route element={<MainLayout />}>
@@ -100,6 +103,7 @@ function App() {
       {/* ===== 404 ===== */}
       <Route path="*" element={<NotFound />} />
     </Routes>
+    </>
   );
 }
 

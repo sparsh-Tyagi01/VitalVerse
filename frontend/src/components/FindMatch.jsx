@@ -1,21 +1,29 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { motion } from "motion/react"
+import { axiosInstance } from "../lib/axios"
+import toast from "react-hot-toast"
 
 const FindMatch = () => {
-  const users = [
-    { name: "Ramesh Kumar", role: "Donor", type: "Organ", subtype: "Kidney", email: "ramesh@example.com", phone: "+91 9100010001" },
-    { name: "Priya Sharma", role: "Donor", type: "Blood", subtype: "A+", email: "priya@example.com", phone: "+91 9100010002" },
-    { name: "Imran Ali", role: "Donor", type: "Blood", subtype: "O-", email: "imran@example.com", phone: "+91 9100010003" },
-    { name: "Kavita Mehra", role: "Donor", type: "Organ", subtype: "Liver", email: "kavita@example.com", phone: "+91 9100010004" },
-    { name: "Rahul Verma", role: "Recipient", type: "Organ", subtype: "Kidney", email: "rahul@example.com", phone: "+91 9100010005" },
-    { name: "Sneha Gupta", role: "Recipient", type: "Blood", subtype: "A+", email: "sneha@example.com", phone: "+91 9100010006" },
-    { name: "Ankit Rao", role: "Recipient", type: "Blood", subtype: "O-", email: "ankit@example.com", phone: "+91 9100010007" },
-  ]
+
+  const [users, setUsers] = useState([])
+
+  useEffect(()=>{
+    async function getData() {
+      const res = await axiosInstance.get("/donor/data")
+      setUsers(res.data)
+    }
+    getData()
+  },[])
+
 
   const [search, setSearch] = useState("")
   const [roleFilter, setRoleFilter] = useState("Any")
   const [typeFilter, setTypeFilter] = useState("Any")
   const [filteredUsers, setFilteredUsers] = useState(users)
+
+  useEffect(()=>{
+    setFilteredUsers(users)
+  },[users])
 
   const handleSearch = () => {
     let results = users.filter((user) => {
@@ -31,6 +39,19 @@ const FindMatch = () => {
     })
 
     setFilteredUsers(results)
+  }
+
+  async function handleRequest(email) {
+    try {
+      const res = await axiosInstance.post('/donor/request', { email }, {
+      headers: {
+        "Content-Type" : "application/json"
+      }
+    })
+    toast.success(res.data.message || "Registered successfully!");
+    } catch (error) {
+      toast.error("Something went wrong try again!");
+    }
   }
 
   return (
@@ -105,6 +126,7 @@ const FindMatch = () => {
                 <motion.button
                   whileTap={{ scale: 0.95 }}
                   className="flex-1 py-2 rounded-lg text-white font-medium bg-green-600 hover:bg-green-700 transition"
+                  onClick={()=> handleRequest(user.email)}
                 >
                   Request
                 </motion.button>

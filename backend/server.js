@@ -5,6 +5,7 @@ import cors from "cors";
 
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import donorRoutes from "./routes/donor.js";
 
 dotenv.config();
 const app = express();
@@ -18,6 +19,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/donor", donorRoutes);
 
 const PORT = process.env.PORT || 5000;
 

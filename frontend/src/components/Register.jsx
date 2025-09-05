@@ -1,6 +1,41 @@
 import { motion } from "motion/react"
+import { useState } from "react"
+import { axiosInstance } from "../lib/axios"
+import { useNavigate } from "react-router-dom"
+import toast from "react-hot-toast"
 
 const Register = () => {
+
+  const navigate = useNavigate()
+
+  const [form, setForm] = useState({
+      name: "",
+      role: "",
+      type: "",
+      subtype: "",
+      email: "",
+      phone: ""
+    });
+
+  async function handelSubmit(e) {
+    e.preventDefault()
+
+    try {
+      const res = await axiosInstance.post("/donor/register", form, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      toast.success(res.data.message || "Registered successfully!");
+      navigate("/find");
+    } catch (err) {
+      const errorMessage =
+        err.response?.data?.error || "Something went wrong. Try again.";
+      toast.error(errorMessage);
+    }    
+  }
+
   return (
     <div className="bg-gray-950 min-h-screen rounded-[10px] text-white">
       <h1 className="font-bold text-3xl ml-4 pt-4">
@@ -11,7 +46,7 @@ const Register = () => {
       </h1>
 
       <div className="w-[60vw] h-[70vh] border border-gray-700 rounded-2xl bg-gray-900 ml-4 mt-6 shadow-md">
-        <form className="flex flex-col items-center mt-8">
+        <form onSubmit={handelSubmit} className="flex flex-col items-center mt-8">
           {/* Full Name */}
           <div className="w-[55vw] mb-4">
             <label className="block font-medium text-gray-200" htmlFor="name">
@@ -21,6 +56,8 @@ const Register = () => {
               type="text"
               id="name"
               name="name"
+              value={form.name}
+              onChange={(e) => setForm({...form, name: e.target.value})}
               required
               placeholder="Enter your name"
               className="focus:outline-none border border-gray-600 rounded-md w-full h-9 pl-2 bg-gray-800 text-white placeholder-gray-400"
@@ -36,11 +73,13 @@ const Register = () => {
               <select
                 id="role"
                 name="role"
-                required
+                value={form.role}
+                onChange={(e) => setForm({...form, role: e.target.value})}
                 className="focus:outline-none border border-gray-600 rounded-md w-full h-9 pl-2 bg-gray-800 text-white"
               >
-                <option value="">Donor</option>
-                <option value="">Recipient</option>
+                <option value=".">Select</option>
+                <option value="Donor">Donor</option>
+                <option value="Recipient">Recipient</option>
               </select>
             </div>
             <div className="w-[27vw]">
@@ -50,34 +89,40 @@ const Register = () => {
               <select
                 id="type"
                 name="type"
-                required
+                value={form.type}
+                onChange={(e) => setForm({...form, type: e.target.value})}
                 className="focus:outline-none border border-gray-600 rounded-md w-full h-9 pl-2 bg-gray-800 text-white"
               >
-                <option value="">Blood</option>
-                <option value="">Organ</option>
+                <option value=".">Select</option>
+                <option value="Blood">Blood</option>
+                <option value="Organ">Organ</option>
               </select>
             </div>
           </div>
 
-          {/* Blood Group */}
+          {/* Sub Type */}
           <div className="w-[55vw] mb-4">
-            <label className="block font-medium text-gray-200" htmlFor="blood">
-              Blood Group*
+            <label className="block font-medium text-gray-200" htmlFor="subtype">
+              Sub Type*
             </label>
             <select
-              id="blood"
-              name="blood"
-              required
+              id="subtype"
+              name="subtype"
+              value={form.subtype}
+              onChange={(e) => setForm({...form, subtype: e.target.value})}
               className="focus:outline-none border border-gray-600 rounded-md w-full h-9 pl-2 bg-gray-800 text-white"
             >
-              <option value="">A+</option>
-              <option value="">A-</option>
-              <option value="">B+</option>
-              <option value="">B-</option>
-              <option value="">O+</option>
-              <option value="">O-</option>
-              <option value="">AB+</option>
-              <option value="">AB-</option>
+              <option value=".">Select</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+              <option value="Kidney">Kidney</option>
+              <option value="Liver">Liver</option>
             </select>
           </div>
 
@@ -92,6 +137,8 @@ const Register = () => {
                 id="email"
                 required
                 name="email"
+                value={form.email}
+                onChange={(e) => setForm({...form, email: e.target.value})}
                 placeholder="you@example.com"
                 className="focus:outline-none border border-gray-600 rounded-md w-full h-9 pl-2 bg-gray-800 text-white placeholder-gray-400"
               />
@@ -101,10 +148,12 @@ const Register = () => {
                 Phone*
               </label>
               <input
-                type="number"
+                type="text"
                 id="phone"
                 required
                 name="phone"
+                value={form.phone}
+                onChange={(e) => setForm({...form, phone: e.target.value})}
                 placeholder="+91 XXXXX XXXXX"
                 className="focus:outline-none border border-gray-600 rounded-md w-full h-9 pl-2 bg-gray-800 text-white placeholder-gray-400"
               />
