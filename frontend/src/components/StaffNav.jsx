@@ -1,20 +1,44 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from "react-router-dom";
 
 const StaffNav = () => {
+  const location = useLocation();
+
+  const links = [
+    { name: "Dashboard", to: "/staff/dashboard" },
+    { name: "Staff Directory", to: "/staff/directory" },
+    { name: "Shifts & Scheduling", to: "/staff/shifts" },
+    { name: "Attendance", to: "/staff/attendance" },
+    { name: "Tasks", to: "/staff/tasks" },
+    { name: "Messages", to: "/staff/messages" },
+    { name: "Payroll", to: "/staff/payroll" },
+  ];
+
   return (
-    <nav className="w-[16vw] h-screen bg-blue-950 shadow-xl rounded-2xl p-4 text-white">
-      <h2 className="text-xl font-bold mb-6">Staff Panel</h2>
-      <ul className="space-y-4">
-        <li><Link to="/staff/dashboard" className="hover:text-yellow-300">Dashboard</Link></li>
-        <li><Link to="/staff/directory" className="hover:text-yellow-300">Staff Directory</Link></li>
-        <li><Link to="/staff/shifts" className="hover:text-yellow-300">Shifts & Scheduling</Link></li>
-        <li><Link to="/staff/attendance" className="hover:text-yellow-300">Attendance</Link></li>
-        <li><Link to="/staff/tasks" className="hover:text-yellow-300">Tasks</Link></li>
-        <li><Link to="/staff/messages" className="hover:text-yellow-300">Messages</Link></li>
-        <li><Link to="/staff/payroll" className="hover:text-yellow-300">Payroll</Link></li>
+    <nav className="w-[16vw] h-screen bg-gray-900 shadow-xl rounded-2xl p-5 text-white flex flex-col">
+      <h2 className="text-2xl font-bold mb-8 text-center text-blue-400">
+        Staff Panel
+      </h2>
+      <ul className="space-y-3">
+        {links.map((link) => {
+          const active = location.pathname === link.to;
+          return (
+            <li key={link.to}>
+              <Link
+                to={link.to}
+                className={`block px-3 py-2 rounded-md transition-colors duration-200 ${
+                  active
+                    ? "bg-blue-700 text-white font-semibold shadow-md"
+                    : "text-gray-300 hover:bg-gray-800 hover:text-yellow-300"
+                }`}
+              >
+                {link.name}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default StaffNav
+export default StaffNav;

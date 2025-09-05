@@ -4,13 +4,13 @@ import { Outlet } from "react-router-dom";
 
 function EcommerceLayout() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-900 text-gray-100">
       {/* Top Navigation */}
       <Enav />
 
       {/* Page content */}
       <div className="p-6">
-        <Outlet /> {/* This is necessary for nested routes */}
+        <Outlet /> {/* Nested routes will render here */}
       </div>
     </div>
   );

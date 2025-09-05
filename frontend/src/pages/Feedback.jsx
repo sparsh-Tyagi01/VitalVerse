@@ -18,47 +18,47 @@ function Feedback() {
   };
 
   return (
-    <div className="p-6 bg-lavender min-h-screen flex flex-col items-center">
-      <h1 className="text-4xl font-extrabold text-indigo-900 mb-8 
-                     bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-indigo-400">
-         Feedback
+    <div className="p-6 min-h-screen flex flex-col items-center bg-gradient-to-br from-gray-900 via-black to-gray-800">
+      <h1 className="text-4xl font-extrabold text-yellow-400 mb-8 
+                     bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-200 drop-shadow-lg">
+        Feedback
       </h1>
 
-      <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md hover:shadow-2xl transition-all">
+      <div className="bg-gray-900/80 rounded-2xl shadow-xl p-8 w-full max-w-md border border-gray-700 hover:shadow-2xl transition-all">
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <label className="text-gray-700 font-semibold">Name</label>
+          <label className="text-gray-300 font-semibold">Name</label>
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            className="bg-gray-800 text-white border border-gray-700 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
             required
           />
 
-          <label className="text-gray-700 font-semibold">Email</label>
+          <label className="text-gray-300 font-semibold">Email</label>
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            className="bg-gray-800 text-white border border-gray-700 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
             required
           />
 
-          <label className="text-gray-700 font-semibold">Feedback</label>
+          <label className="text-gray-300 font-semibold">Feedback</label>
           <textarea
             name="feedback"
             value={formData.feedback}
             onChange={handleChange}
             rows="5"
-            className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            className="bg-gray-800 text-white border border-gray-700 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
             required
           ></textarea>
 
           <button
             type="submit"
-            className="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-500 transition-colors shadow-md mt-2"
+            className="bg-yellow-400 text-black px-6 py-3 rounded-xl font-bold hover:bg-yellow-500 transition-colors shadow-md mt-2"
           >
             Submit Feedback
           </button>

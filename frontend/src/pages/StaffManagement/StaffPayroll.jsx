@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 const StaffPayroll = () => {
- 
   const [payroll] = useState([
     {
       id: 1,
@@ -33,20 +32,20 @@ const StaffPayroll = () => {
     staff.baseSalary + staff.allowance - staff.deductions;
 
   return (
-    <div className="p-6 bg-fuchsia-100 min-h-screen">
-     
-      <h1 className="text-3xl font-bold text-blue-950 mb-6">
-        Payroll Management
+    <div className="p-6 bg-gray-900 min-h-screen text-white rounded-xl">
+      {/* Title */}
+      <h1 className="text-3xl font-bold text-yellow-400 mb-6">
+        💰 Payroll Management
       </h1>
 
-      
-      <div className="bg-white shadow-lg rounded-2xl p-6">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+      {/* Payroll Table */}
+      <div className="bg-gray-800 shadow-lg rounded-2xl p-6">
+        <h2 className="text-2xl font-semibold text-blue-300 mb-4">
           Salary Details
         </h2>
         <table className="w-full border-collapse">
           <thead>
-            <tr className="bg-blue-950 text-white">
+            <tr className="bg-gray-700 text-blue-300">
               <th className="py-3 px-4 text-left">Name</th>
               <th className="py-3 px-4 text-left">Role</th>
               <th className="py-3 px-4 text-left">Base Salary</th>
@@ -56,25 +55,25 @@ const StaffPayroll = () => {
             </tr>
           </thead>
           <tbody>
-            {payroll.map((staff) => (
+            {payroll.map((staff, index) => (
               <tr
                 key={staff.id}
-                className="border-b hover:bg-fuchsia-50 transition-all"
+                className={`border-b border-gray-700 ${
+                  index % 2 === 0 ? "bg-gray-900" : "bg-gray-800"
+                } hover:bg-gray-700 transition`}
               >
-                <td className="py-3 px-4 font-semibold text-gray-800">
-                  {staff.name}
-                </td>
-                <td className="py-3 px-4 text-gray-600">{staff.role}</td>
-                <td className="py-3 px-4 text-gray-700">
+                <td className="py-3 px-4 font-semibold">{staff.name}</td>
+                <td className="py-3 px-4 text-gray-300">{staff.role}</td>
+                <td className="py-3 px-4 text-gray-200">
                   ₹{staff.baseSalary.toLocaleString()}
                 </td>
-                <td className="py-3 px-4 text-gray-700">
+                <td className="py-3 px-4 text-green-400">
                   ₹{staff.allowance.toLocaleString()}
                 </td>
-                <td className="py-3 px-4 text-red-600 font-medium">
+                <td className="py-3 px-4 text-red-400 font-medium">
                   ₹{staff.deductions.toLocaleString()}
                 </td>
-                <td className="py-3 px-4 text-green-600 font-bold">
+                <td className="py-3 px-4 text-yellow-300 font-bold">
                   ₹{calculateNetSalary(staff).toLocaleString()}
                 </td>
               </tr>

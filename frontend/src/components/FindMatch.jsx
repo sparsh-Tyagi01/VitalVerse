@@ -34,20 +34,24 @@ const FindMatch = () => {
   }
 
   return (
-    <div className="bg-fuchsia-50 min-h-screen rounded-[10px]">
-      <h1 className="font-bold text-3xl ml-4 pt-4">Donors & Recipients</h1>
-      <h1 className="font-bold text-xl ml-4 pt-4">Find Match</h1>
+    <div className="bg-gray-900 min-h-screen py-6 px-6 rounded-[10px] text-white">
+      {/* Header */}
+      <div className="mb-6">
+        <h1 className="font-bold text-3xl text-white">Donors & Recipients</h1>
+        <h2 className="font-semibold text-lg text-gray-300 mt-1">Find Match</h2>
+      </div>
 
-      <div className="flex justify-around items-center shadow-[0px_0px_3px_black] rounded-[10px] h-15 mx-4 mt-6 p-2">
+      {/* Filters Section */}
+      <div className="flex flex-wrap gap-4 items-center bg-gray-800 shadow-md rounded-xl p-4 mb-6">
         <input
           type="text"
           placeholder="Search by name/type"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="border border-gray-500 pl-2 focus:outline-none h-8 rounded-[5px]"
+          className="bg-gray-700 border border-gray-600 pl-3 pr-2 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white placeholder-gray-400 flex-1"
         />
         <select
-          className="border border-gray-500 h-8 rounded-[5px] w-40"
+          className="bg-gray-700 border border-gray-600 py-2 px-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white"
           value={roleFilter}
           onChange={(e) => setRoleFilter(e.target.value)}
         >
@@ -56,7 +60,7 @@ const FindMatch = () => {
           <option>Recipient</option>
         </select>
         <select
-          className="border border-gray-500 h-8 rounded-[5px] w-40"
+          className="bg-gray-700 border border-gray-600 py-2 px-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-white"
           value={typeFilter}
           onChange={(e) => setTypeFilter(e.target.value)}
         >
@@ -67,44 +71,48 @@ const FindMatch = () => {
         <motion.button
           whileTap={{ scale: 0.95 }}
           onClick={handleSearch}
-          className="rounded-[5px] bg-green-800 font-medium text-white px-6 h-8"
+          className="rounded-lg bg-indigo-600 hover:bg-indigo-700 transition text-white font-semibold px-6 py-2 shadow-md"
         >
           Search
         </motion.button>
       </div>
 
-      <div className="flex flex-wrap gap-4 ml-4 mt-6">
+      {/* User Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredUsers.length > 0 ? (
           filteredUsers.map((user) => (
-            <div
+            <motion.div
               key={user.email}
-              className="w-[25vw] h-[30vh] bg-white hover:shadow-[0px_0px_3px_gray] shadow-md rounded-2xl flex flex-col justify-center items-start pl-4"
+              whileHover={{ scale: 1.02 }}
+              className="bg-gray-800 shadow-md rounded-xl p-5 flex flex-col justify-between"
             >
-              <h1 className="font-medium">{user.name}</h1>
-              <h3 className="text-sm">
-                {user.role} • {user.type} • {user.subtype}
-              </h3>
-              <p className="text-gray-600">
-                {user.email} • {user.phone}
-              </p>
-              <div className="mt-4">
+              <div>
+                <h1 className="font-semibold text-lg text-white">{user.name}</h1>
+                <p className="text-sm text-gray-400 mt-1">
+                  {user.role} • {user.type} • {user.subtype}
+                </p>
+                <p className="text-sm text-gray-500 mt-1">
+                  {user.email} • {user.phone}
+                </p>
+              </div>
+              <div className="mt-4 flex gap-3">
                 <motion.button
                   whileTap={{ scale: 0.95 }}
-                  className="py-1 px-4 mr-4 rounded-[5px] text-white font-medium bg-blue-600 cursor-pointer"
+                  className="flex-1 py-2 rounded-lg text-white font-medium bg-blue-600 hover:bg-blue-700 transition"
                 >
                   View
                 </motion.button>
                 <motion.button
                   whileTap={{ scale: 0.95 }}
-                  className="py-1 px-4 rounded-[5px] text-white font-medium bg-green-700 cursor-pointer"
+                  className="flex-1 py-2 rounded-lg text-white font-medium bg-green-600 hover:bg-green-700 transition"
                 >
                   Request
                 </motion.button>
               </div>
-            </div>
+            </motion.div>
           ))
         ) : (
-          <p className="ml-4 text-gray-600">No matches found.</p>
+          <p className="text-gray-400 text-center col-span-full">No matches found.</p>
         )}
       </div>
     </div>

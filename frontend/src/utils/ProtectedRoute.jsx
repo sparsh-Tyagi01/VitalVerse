@@ -7,8 +7,8 @@ export default function ProtectedRoute({ children }) {
 
   if (loading) return <div>Loading...</div>;
 
-  // Fix: redirect to /donor/login (same as App.jsx)
-  if (!user) return <Navigate to="/donor/login" replace />;
+  // Fix: redirect to /login (same as App.jsx)
+  if (!user) return <Navigate to="/login" replace />;
 
   return children;
 }

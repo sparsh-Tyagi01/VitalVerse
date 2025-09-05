@@ -17,29 +17,29 @@ function Support() {
   };
 
   return (
-    <div className="p-6 bg-lavender min-h-screen">
-     
-      <h1 className="text-4xl font-extrabold text-indigo-900 mb-8 
-                     bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-indigo-400">
+    <div className="p-6 bg-gray-900 min-h-screen">
+      {/* Title */}
+      <h1 className="text-4xl font-extrabold mb-8 bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
         🛠️ Support / FAQs
       </h1>
 
+      {/* FAQ Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="bg-white rounded-2xl shadow-lg p-5 cursor-pointer 
-                       hover:shadow-2xl transform hover:-translate-y-1 transition-all"
+            className="bg-gray-800 rounded-2xl shadow-lg p-5 cursor-pointer 
+                       hover:shadow-2xl transform hover:-translate-y-1 transition-all border border-gray-700"
             onClick={() => toggleFAQ(index)}
           >
             <div className="flex justify-between items-center">
-              <h3 className="text-lg md:text-xl font-semibold text-gray-800">{faq.q}</h3>
-              <span className="text-indigo-600 font-bold text-2xl">
+              <h3 className="text-lg md:text-xl font-semibold text-gray-100">{faq.q}</h3>
+              <span className="text-indigo-400 font-bold text-2xl">
                 {openIndex === index ? "−" : "+"}
               </span>
             </div>
             {openIndex === index && (
-              <p className="mt-3 text-gray-700">{faq.a}</p>
+              <p className="mt-3 text-gray-300">{faq.a}</p>
             )}
           </div>
         ))}

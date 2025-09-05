@@ -8,21 +8,23 @@ const messagesData = [
 
 function Messages() {
   return (
-    <div className="p-6">
-   
-      <h1 className="text-2xl font-bold mb-6 to-black">📢 Messages & Announcements</h1>
+    <div className="p-6 bg-gray-900 min-h-screen text-white rounded-xl">
+      {/* Title */}
+      <h1 className="text-3xl font-bold text-yellow-400 mb-6">
+        📢 Messages & Announcements
+      </h1>
 
-     
+      {/* Messages Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {messagesData.map((msg) => (
           <div
             key={msg.id}
-            className="bg-white shadow-md rounded-2xl p-6 hover:shadow-lg transition border-t-4 border-blue-600"
+            className="bg-gray-800 shadow-lg rounded-2xl p-6 border-l-4 border-blue-500 hover:bg-gray-700 transition"
           >
-            <h2 className="text-lg font-semibold text-blue-800 mb-2">
+            <h2 className="text-lg font-semibold text-blue-400 mb-2">
               {msg.sender}
             </h2>
-            <p className="text-gray-700">{msg.message}</p>
+            <p className="text-gray-300">{msg.message}</p>
           </div>
         ))}
       </div>
